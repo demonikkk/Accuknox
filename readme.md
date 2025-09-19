@@ -14,10 +14,7 @@ Move into the certificate directory and create the TLS secret:
 
 cd certificate
 
-kubectl create secret tls wisecow-tls \
-  --cert=tls.crt \
-  --key=tls.key \
-  -n wisecow
+kubectl create secret tls wisecow-tls --cert=tls.crt --key=tls.key -n wisecow
 This secret will be used by the ingress controller to enable HTTPS.
 
 3. Expose ingress controller locally
@@ -28,5 +25,6 @@ kubectl port-forward svc/ingress-nginx-controller -n ingress-nginx 8080:80 8443:
 Open your browser and visit:
 
 👉 https://localhost:8443/
+
 
 ⚠️ Note: Since the TLS certificate is self-signed, the browser will show a security warning. You can safely proceed, as this is expected for local development.
